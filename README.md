@@ -18,8 +18,17 @@ simple linear regression formula: y = $\alpha$ + $\beta x$
 multiple linear regression y = $\alpha$ + $\beta x1$ + $\beta x2$ + $\beta x3$ + ... + $\beta xn$
 
 ### Module 2 - Classification
+simple classification: Binary classification
+classify in more than 2(1:0/True:False) classes
+    > example:
+        - spam or not
+        - fraudulent transaction or not
+        - eye colour (blue, green, brown)
 
-
+Regression VS Classification
+ - Regression: response variable is quantitative 
+ - Classification: response variable is categorical or qualitative
+ 
 ### Module 3 - Re-sampling
 
 
