@@ -125,8 +125,80 @@ def plot_roc(roc_auc):
 
 ### Module 3 - Re-sampling
 
+##### re-sampling: 
+important for model performance and validation. Done in every data science task
+    > example: cross validation
+
+intuition
+    - repeatedly draw samples from a training set and refit the model
+    - gain more information
+    - see how model would perform on new data without collecting new data
+
+cross-validation
+    - widely used
+    - used to evaluate model's performance and find the best parameters for the model
+    uses 3 approaches
+        - validation set: randomly split the dataset into training and test set
+        - leave-one-out validation: only one data point is used for training and the rest for testing
+        - k-fold cross-validation: randomly split the dataset to k-groups/ folds of equal times
+
+k-fold cross validation in python
+```
+ lin_reg = LinearRegression()
+
+ MSEs = cross_val_score(lin_reg, X, y, scoring='neg_mean_squared_error', cv=5)
+
+ mean_MSE = np.mean(MSEs)
+
+ print(-mean_MSE)
+```
 
 ### Module 4 - Regularization
+
+##### regularization:
+used to prevent overfitting and improve performance
+    > example: ridge regression and lasso
+
+intuition
+    - models can overfit, meaning that they will not generalize well
+    - Poor performance on 'unseen' data
+
+regularization methods
+    - Ridge regression
+    - Lasso
+    Also called: shrinkage methods
+
+Ridge regression
+    - lambda is a tuning parameter
+    - find the best lambda using cross validation, Use a range of lambdas
+    - all predictors are kept
+    also called: L2 regularization
+
+ridge regression in python
+```
+ridge = Ridge()
+
+parameters = {'alphs': [1e-15, 1e-10, 1e-8, 1e-4, 1e-3, 1e-2, 1, 5, 10, 20]}
+
+ridge_regressor = GridSearchCV(ridge, parameters, scoring='neg_mean_squared_error', cv=5)
+
+ridge_regressor.fit(X,y)
+```
+
+Lasso
+    -    adds new term to the optimization function
+    also called L1 regularization
+
+ridge regression in python
+```
+lasso = Lasso(tol=0.05)
+
+parameters = {'alphs': [1e-15, 1e-10, 1e-8, 1e-4, 1e-3, 1e-2, 1, 5, 10, 20]}
+
+lasso_regressor = GridSearchCV(lasso, parameters, scoring='neg_mean_squared_error', cv=5)
+
+lasso_regressor.fit(X,y)
+```
 
 ### Module 5 - Decision Trees
 
